@@ -1,0 +1,46 @@
+var app = angular.module('CosmicEncounter', ['ngRoute']);
+
+app.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: '../views/search.html',
+        controller: 'SearchController'
+      }).
+      when('/:original_name', {
+        templateUrl: '../views/race.html',
+        controller: 'RaceController'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+  }
+]);
+
+app.service('AlienService', function(){
+  return {
+    aliens: function(){
+      return <%= File.read('source/javascripts/races.json') %>.sort(function(a, b){
+        return a.original_name > b.original_name ? 1 : -1
+      });
+    },
+    parameterize: function(alienName){
+      return alienName.toLowerCase().trim().replace(' ', '-');
+    },
+    findAlien: function(alienName){
+      return this.aliens().filter(function(item, index, array){
+        return this.parameterize(item.original_name) == alienName
+      }, this)[0];
+    }
+  }
+});
+
+app.controller('SearchController', function ($scope, AlienService) {
+  $scope.aliens = AlienService.aliens();
+  $scope.parameterize = AlienService.parameterize;
+});
+
+app.controller('RaceController', function ($scope, $routeParams, AlienService) {
+  console.log($routeParams.original_name)
+  $scope.alien = AlienService.findAlien($routeParams.original_name)
+});

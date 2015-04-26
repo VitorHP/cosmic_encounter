@@ -14,28 +14,9 @@
 
     %link{href: '/stylesheets/style.css', type: 'text/css', rel: 'stylesheet' }
 
-  %body
+  %body{ 'ng-app' => 'CosmicEncounter' }
 
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          %button.btn.btn-navbar{data: {target: '.nav-collapse', toggle: 'collapse'}, type: 'button'}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand{href: '#'} Project name
-          .nav-collapse.collapse
-            %ul.nav
-              %li.active
-                %a{href: '#'} Home
-              %li
-                %a{href: '#about'} About
-              %li
-                %a{href: '#contact'} Contact
-          / /.nav-collapse
-
-    .container
-      = yield
+    = yield
 
     / Placed at the end of the document so the pages load faster
     %script{type: 'text/javascript', src: 'http://code.jquery.com/jquery.js'}

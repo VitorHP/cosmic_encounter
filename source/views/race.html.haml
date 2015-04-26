@@ -1,0 +1,38 @@
+
+%a{ 'href' => '/#/' }
+  Voltar
+
+%h1 {{ alien.name }}
+
+%h2 Poder
+%dl
+  %dt Descrição
+  %dd {{ alien.power }}
+  %dt Jogador
+  %dd {{ alien.player }}
+  %dt Uso
+  %dd {{ alien.when }}
+  %dt Fase
+  %dd {{ alien.phase }}
+
+%h2 Flare
+
+%h3 Wild
+
+%dl
+  %dt Descrição
+  %dd {{ alien.flare.wild.description }}
+  %dt Jogador
+  %dd {{ alien.flare.wild.player }}
+  %dt Fase
+  %dd {{ alien.flare.wild.phase }}
+
+%h3 Super
+
+%dl
+  %dt Descrição
+  %dd {{ alien.flare.super.description }}
+  %dt Jogador
+  %dd {{ alien.flare.super.player }}
+  %dt Fase
+  %dd {{ alien.flare.super.phase }}

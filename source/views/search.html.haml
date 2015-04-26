@@ -1,0 +1,11 @@
+
+.alien-search{ 'ng-controller' => 'SearchController' }
+  .search-form
+    %form.form-search
+      %input.search-form__search-field{:placeholder => "Digite o nome da raça", :type => "text", 'ng-model' => 'searchText' }
+
+  .search-results
+    %ul.search-results__result-list
+      %li.search-results__result-list-item{ 'ng-repeat' => 'alien in aliens | filter:searchText' }
+        %a{ 'href' => "/#/{{parameterize(alien.original_name)}}" }
+          %span {{ alien.original_name }}
