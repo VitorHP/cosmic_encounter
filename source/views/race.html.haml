@@ -1,38 +1,68 @@
 
-%a{ 'href' => '/#/' }
-  Voltar
+.row
+  .col-xs-12
+    %a{ 'href' => '/#/' } Voltar
+.row
+  .col-xs-12
+    .alien
+      %h1.alien__name {{ alien.name }}
 
-%h1 {{ alien.name }}
+      .alien__power
+        %p {{ alien.power }}
 
-%h2 Poder
-%dl
-  %dt Descrição
-  %dd {{ alien.power }}
-  %dt Jogador
-  %dd {{ alien.player }}
-  %dt Uso
-  %dd {{ alien.when }}
-  %dt Fase
-  %dd {{ alien.phase }}
+      .alien__power-constraints
+        .row
+          .col-xs-8
+            %span.alien__power-constraint.alien__player-constraint {{ alien.player }}
+          .col-xs-4
+            %span.alien__power-constraint.alien__use-constraint {{ alien.when }}
 
-%h2 Flare
+      %table.alien__phases.table
+        %tbody
+          %tr
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Início do turno')" } Início do Turno
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Reagrupar')" } Reagrupar
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Destino')" } Destino
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Lançamento')" } Lançamento
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Aliança')" } Aliança
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Planejamento')" } Planejamento
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Revelar')" } Revelar
+            %td.alien__phase{ :'ng-class' => "isPhaseSelected(alien, 'Resolução')" } Resolução
 
-%h3 Wild
 
-%dl
-  %dt Descrição
-  %dd {{ alien.flare.wild.description }}
-  %dt Jogador
-  %dd {{ alien.flare.wild.player }}
-  %dt Fase
-  %dd {{ alien.flare.wild.phase }}
-
-%h3 Super
-
-%dl
-  %dt Descrição
-  %dd {{ alien.flare.super.description }}
-  %dt Jogador
-  %dd {{ alien.flare.super.player }}
-  %dt Fase
-  %dd {{ alien.flare.super.phase }}
+.row{ :'ng-if' => "alien.flare !== undefined" }
+  .col-xs-12
+    .flare
+      %h1.flare__name
+      %h3.flare__power-name
+      .flare__wild
+        %h2.flare__kind Wild
+        .flare__power
+          {{ alien.flare.wild.description }}
+        .flare__constraints
+          .row
+            .col-xs-8
+              .flare__player-constraint
+                {{ alien.flare.wild.player }}
+            .col-xs-4
+              .flare__phase--selected
+                %table.alien__phases.table
+                  %tbody
+                    %tr
+                      %td.flare__phase.flare__phase--selected
+                        {{ alien.flare.wild.phase }}
+      .flare__super
+        %h2.flare__kind Super
+        .flare__power
+          {{ alien.flare.super.description }}
+        .flare__constraints
+          .row
+            .col-xs-8
+              %span.flare__player-constraint {{ alien.flare.super.player }}
+            .col-xs-4
+              .flare__phase--selected
+                %table.flare__phases.table
+                  %tbody
+                    %tr
+                      %td.flare__phase.flare__phase--selected
+                        {{ alien.flare.super.phase }}

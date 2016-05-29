@@ -41,6 +41,16 @@ app.controller('SearchController', function ($scope, AlienService) {
 });
 
 app.controller('RaceController', function ($scope, $routeParams, AlienService) {
-  console.log($routeParams.original_name)
   $scope.alien = AlienService.findAlien($routeParams.original_name)
+
+  $scope.isPhaseSelected = function(alien, phase) {
+    var alienPhases = !$.isArray(alien.phase) ?
+      [alien.phase] :
+      alien.phase;
+
+    return alienPhases.indexOf(phase) !== -1 ?
+      "alien__phase--selected" :
+      "";
+  }
+
 });
