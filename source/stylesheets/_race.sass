@@ -1,0 +1,59 @@
+
+.search-form
+  .search-form__search-field
+    text-align: center
+    width: 100%
+    height: 70px
+
+.search-results
+  .search-results__result-list
+    list-style: none
+
+  .search-results__result-list-item
+    text-align: center
+    margin: 10px
+
+.alien,
+.flare
+  background-color: white
+  border: 1px solid #ccc
+  box-shadow: 0px 0px 7px 3px $secondary-1-4
+  padding: 1rem
+  border-radius: 4px
+  margin-bottom: 1rem
+
+.alien__name,
+.flare__kind
+  text-align: center
+
+.alien__power,
+.flare__power
+  background-color: #eee
+  padding: 1rem
+  border-radius: 4px
+  margin-bottom: 1rem
+
+.alien__power-constraints
+  margin-bottom: 1rem
+
+.alien__power-constraint,
+.flare__player-constraint
+  background-color: #eee
+  display: inline-block
+  padding: .5rem
+  text-align: center
+  width: 100%
+
+.alien__phase,
+.flare__phase
+  text-align: center
+  background-color: $secondary-1-0
+  color: white
+
+.alien__phase--unselected
+  @extend .hidden-xs
+
+.alien__phase--selected,
+.flare__phase--selected
+  background-color: $secondary-2-0
+  color: $text-color
