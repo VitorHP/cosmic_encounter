@@ -914,7 +914,7 @@
         "wild": {
             "player": "Como QUALQUER jogador",
             "phase": "Qualquer fase",
-            "description": "Quando você comrprar uma nova mão ou outro jogador receber compensação de você, você pode colocar esta carta e duas outras de face para baixo a sua frete até após a troca. Se compensação for pega de você, mas cartas viradas para baixo não pode ser tradas de você. Se estiver comrando uma nova mão, você recebe uma nova mão cheia em adição às cartas viradas para baixo."
+            "description": "Quando você comprar uma nova mão ou outro jogador receber compensação de você, você pode colocar esta carta e duas outras de face para baixo a sua frete até após a troca. Se compensação for pega de você, mas cartas viradas para baixo não pode ser tradas de você. Se estiver comrando uma nova mão, você recebe uma nova mão cheia em adição às cartas viradas para baixo."
         },
         "super": {
             "player": "Somente DEFENDENDO",
