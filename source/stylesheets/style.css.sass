@@ -25,6 +25,41 @@ a:visited
   text-decoration: none
 
 body
-  background-color: $secondary-1-1
 
-@import "race"
+.power-title
+  margin-top: 0
+  font-size: 1.5rem
+  text-align: center
+
+.search-form,
+.flares-form
+  margin-top: 1rem
+  margin-bottom: 1rem
+
+.race
+  &__power-constraints
+    margin-bottom: 1rem
+
+  &__when,
+  &__player,
+  &__phase
+    text-align: center
+
+  &__when--mandatory
+
+.flares-form
+  select,
+  button
+    display: inline-block
+
+  select
+    margin: 0
+    width: 87%
+
+  button
+    top: -2px
+
+.flare
+  &__race-name
+    margin-bottom: 1rem
+

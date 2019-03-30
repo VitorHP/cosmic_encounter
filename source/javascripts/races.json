@@ -1663,7 +1663,7 @@
     "player": "NÃO defendendo",
     "when": "Opcional",
     "phase": "Destino",
-    "power": "Você tem o poder do Contágio. Sempre que qualquer cor de outro jogador ou uma carta dd destino especial que tem como alvo outro jogador é comprada do maço de destino, você PODE USAR este poder para infectar aquele jogador. Se você tem uma ou mais colônias no sistema natal do jogador consistindo de pelo menos 3 naves, escolha uma dessas colônias e pegue um ou mais de suas figuras de lá, movendo-as para qualquer outro planeta naquele sistema. Suas naves coexistem com quaisquer outras naves já naquele planeta ao menos que outro efeito de jogo previna você de fazer isso, nesse caso elas não podem ser movidas para aquele planeta. Em uma carta curinga de destino, você pode somente infectar o jogador escolhido para ser o defensor.",
+    "power": "Você tem o poder do Contágio. Sempre que qualquer cor de outro jogador ou uma carta de destino especial que tem como alvo outro jogador é comprada do maço de destino, você PODE USAR este poder para infectar aquele jogador. Se você tem uma ou mais colônias no sistema natal do jogador consistindo de pelo menos 3 naves, escolha uma dessas colônias e pegue um ou mais de suas figuras de lá, movendo-as para qualquer outro planeta naquele sistema. Suas naves coexistem com quaisquer outras naves já naquele planeta ao menos que outro efeito de jogo previna você de fazer isso, nesse caso elas não podem ser movidas para aquele planeta. Em uma carta curinga de destino, você pode somente infectar o jogador escolhido para ser o defensor.",
     "version": "CI",
     "color": "Vermelha",
     "flare": {

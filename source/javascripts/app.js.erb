@@ -7,10 +7,6 @@ app.config(['$routeProvider',
         templateUrl: '../views/search.html',
         controller: 'SearchController'
       }).
-      when('/:original_name', {
-        templateUrl: '../views/race.html',
-        controller: 'RaceController'
-      }).
       otherwise({
         redirectTo: '/'
       });
@@ -20,9 +16,13 @@ app.config(['$routeProvider',
 app.service('AlienService', function(){
   return {
     aliens: function(){
-      return <%= File.read('source/javascripts/races.json') %>.sort(function(a, b){
-        return a.original_name > b.original_name ? 1 : -1
-      });
+      return <%= File.read('source/javascripts/races.json') %>
+        .filter(function(alien) {
+          return alien.flare.wild.player !== "";
+        })
+        .sort(function(a, b){
+          return a.original_name > b.original_name ? 1 : -1
+        });
     },
     parameterize: function(alienName){
       return alienName.toLowerCase().trim().replace(' ', '-');
@@ -36,21 +36,29 @@ app.service('AlienService', function(){
 });
 
 app.controller('SearchController', function ($scope, AlienService) {
+  $scope.race = undefined;
+  $scope.currentSelectedFlare = undefined;
   $scope.aliens = AlienService.aliens();
   $scope.parameterize = AlienService.parameterize;
-});
+  $scope.selectedFlares = [];
 
-app.controller('RaceController', function ($scope, $routeParams, AlienService) {
-  $scope.alien = AlienService.findAlien($routeParams.original_name)
-
-  $scope.isPhaseSelected = function(alien, phase) {
-    var alienPhases = !$.isArray(alien.phase) ?
-      [alien.phase] :
-      alien.phase;
-
-    return alienPhases.indexOf(phase) !== -1 ?
-      "alien__phase--selected" :
-      "alien__phase--unselected";
+  $scope.submitFlare = function() {
+    if ($scope.currentSelectedFlare !== undefined) {
+      $scope.selectedFlares.push($scope.currentSelectedFlare);
+    }
   }
 
+  $scope.flarePower = function(flareRace) {
+    return $scope.race.name === flareRace.name ?
+      flareRace.flare.super :
+      flareRace.flare.wild;
+  }
+
+  $scope.removeFlare = function(flareRace) {
+    var index = $scope.selectedFlares.findIndex(function(element) {
+      return flareRace === element.original_name
+    } )
+
+    $scope.selectedFlares.splice(index, 1);
+  }
 });

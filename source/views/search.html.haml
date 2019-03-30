@@ -1,11 +1,39 @@
 
-.alien-search{ 'ng-controller' => 'SearchController' }
-  .search-form
-    %form.form-search
-      %input.search-form__search-field{:placeholder => "Digite o nome da raça", :type => "text", 'ng-model' => 'searchText' }
 
-  .search-results
-    %ul.search-results__result-list
-      %li.search-results__result-list-item{ 'ng-repeat' => 'alien in aliens | filter:searchText' }
-        %a{ 'href' => "/#/{{parameterize(alien.original_name)}}" }
-          %span {{ alien.original_name }}
+.alien-search{ 'ng-controller' => 'SearchController' }
+  .row.search-form
+    .col-xs-12
+      %form
+        %select.form-control{ 'ng-model' => 'race', 'ng-options' => 'alien.original_name for alien in aliens' }
+          %option{ 'value' => '', 'disabled' => true, 'selected' => true } Escolha sua raça
+
+  .row{ 'ng-if' => 'race !== undefined' }
+    .col-xs-12
+      .well
+        .row.race__power-constraints
+          .col-xs-4.race__when {{ race.when }}
+          .col-xs-4.race__player {{ race.player }}
+          .col-xs-4.race__phase {{ race.phase }}
+        .race__power.lead
+          {{ race.power }}
+
+  .row{ 'ng-show' => 'race !== undefined' }
+    .col-xs-12
+      Cartas
+      .flares-form
+        %select.form-control.flares-form{ 'ng-model' => 'currentSelectedFlare', 'ng-options' => 'alien.original_name for alien in aliens' }
+          %option{ 'value' => '', 'disabled' => true, 'selected' => true } Escolha a raça da carta
+        %button.btn.btn-primary.glyphicon.glyphicon-plus{ 'ng-click' => 'submitFlare()', type: 'submit' }
+
+  .row{ 'ng-repeat' => 'flare in selectedFlares' }
+    .col-xs-12
+      .well
+        %button{ "type" => "button", "class" => "close", "ng-click" => "removeFlare(flare.original_name)" }
+          %span &times
+        .row.flare__race-name
+          .col-xs-12 {{ flare.original_name }}
+        .row.race__power-constraints
+          .col-xs-6 {{ flarePower(flare).player }}
+          .col-xs-6 {{ flarePower(flare).phase }}
+        .race__power.lead
+          {{ flarePower(flare).description }}
